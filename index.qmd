@@ -1,41 +1,42 @@
 ---
-title: "YOUR NAME"
+title: "Julia Candee"
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: img/profile.png
+  image: img/profilepic.png
   image-width: 15em
   image-shape: round # rectangle  round  rounded
   
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/julia-candee-132916274/
     - icon: instagram
       text: Instagram
-      href: https://instagram.com
+      href: https://www.instagram.com/juliacandee/
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/JuliaCandee
     - icon: file-earmark-pdf
       text: Resumé
-      href: https://GITHUB_USERNAME.github.io/resume-example.pdf
+      href: https://JuliaCandee.github.io/JuliaCandeeResume.pdf
     - icon: mailbox
       text: Email
-      href: mailto:YOUR_EMAIL@geneseo.edu
+      href: mailto:jlc101@geneseo.edu
 
 ---
 
 
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Julia Candee is a Business Administration major at SUNY Geneseo, Julia excels in organization, problem-solving, and leadership. Outside of academics, Julia engages in various community initiatives, demonstrates exceptional interpersonal skills, and actively participates in events fostering positive connections.
+
 
 ## Education
 
 State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Business Administration 
+B.S. in Business Administration | Aug 2022 - May 2026 <br>
+Minor in Marketing
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
+Champions Martial Arts | Day Camp Counsler  | March 2023 - Aug 2023
 
 

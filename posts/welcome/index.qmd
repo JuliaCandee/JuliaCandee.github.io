@@ -1,12 +1,13 @@
 ---
 title: "Welcome To My Blog"
-author: "YOUR NAME"
-date: "2023-10-27"
+author: "Julia Candee"
+date: "2023-12-07"
 categories: [news]
 ---
 
 This is the first post in a Quarto blog. Welcome!
 
+
 ![](thumbnail.jpg)
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+Join me, Julia Candee, on an insightful journey through the transformative realm of data analytics, where we unravel the power of data to drive informed decisions and revolutionize industries.
