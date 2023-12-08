@@ -2,7 +2,8 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/welcome/index.html"
+      "/posts/welcome/index.html",
+      "/posts/beer-market/beer.html"
     ]
   }
 ]
