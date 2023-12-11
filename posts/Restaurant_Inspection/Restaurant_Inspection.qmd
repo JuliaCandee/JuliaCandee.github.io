@@ -3,7 +3,7 @@ title: "Restaurant_Inspection"
 author: "Julia Candee"
 date: "2023-12-11"
 categories: [Restaurant_Inspection, code, analysis]
-image: "image.png"
+image: Restaurant.jpg
 
 execute: 
   warning: false

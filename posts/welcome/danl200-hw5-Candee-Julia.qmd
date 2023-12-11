@@ -6,11 +6,11 @@ editor: visual
 -   
 
     ---
-    title: "beer_markets"
+    title: "NFL2022"
     author: "Julia Candee"
     date: "2023-12-08"
-    categories: [beer_markets, code, analysis]
-    image: "image.png"
+    categories: [NFL2022, code, analysis]
+    image: football.jpg
 
     execute: 
       warning: false
@@ -41,42 +41,45 @@ editor: visual
               )
     ```
 
-    Let's analyze the `beer_markets` data:
+    Let's analyze the `NFL2022` data:
 
     ```{r}
-    beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets.csv")
+    NFL2022 <- read_csv("https://bcdanl.github.io/data/NFL2022_stuffs.csv")
     ```
 
     ## Q1a
 
     ```{r}
     #| results: asis
-    rmarkdown::paged_table(beer_markets) 
+    rmarkdown::paged_table(NFL2022) 
     ```
 
-    ## Variable Description for `beer_markets` data.frame
+    ## Variable Description for `NFL2022` data.frame
 
-    The following describes the variables in the `beer_markets` data.frame.
+    The following describes the variables in the `NFL2022` data.frame.
 
-    -   `quanity` quanity of beer
+    -  `play_id` 
 
-    -   `brand` brand of beer
 
-    -   `dollar_spent` number of dollars spent
+    -   `game_id`
+ 
 
-    -   `beer-floz` beer per fluid ounce
+    -   `drive` 
+    
+    -   `week`
 
-    -   `price_per_floz` price per fluid ounce
+    -   `posteam`
 
-    -   `age`, `race`, `degree`, `employment` age, race, degree, and employment
+    -   `qtr`
 
-    -   `cow` cow
+    -   `down`
 
-    -   `microwave` Do they have a microwave in their home
+    -   `half_seconds_remaining`
 
-    -   `dishwasher` Do they have a dishwasher in their home
+    -   `pass`
+    
+    -   `wp`
 
-    -   `npeople` number of people
 
 -   Add a blog post with your answers for Question 2 to your website (`https://JuliaCandee.github.io/`).
 

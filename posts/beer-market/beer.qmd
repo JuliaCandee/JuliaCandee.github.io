@@ -3,7 +3,7 @@ title: "beer_markets"
 author: "Julia Candee"
 date: "2023-12-08"
 categories: [beer_markets, code, analysis]
-image: "image.png"
+image: beer_market.jpg
 
 execute: 
   warning: false

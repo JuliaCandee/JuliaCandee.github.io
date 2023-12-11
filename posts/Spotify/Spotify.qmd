@@ -3,7 +3,7 @@ title: "Spotify"
 author: "Julia Candee"
 date: "2023-12-11"
 categories: [Spotify, code, analysis]
-image: "image.png"
+image: Spotify.png
 
 execute: 
   warning: false
