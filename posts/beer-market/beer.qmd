@@ -1,8 +1,8 @@
 ---
-title: "Starwars"
-author: "Your Name"
-date: "2023-10-30"
-categories: [starwars, code, analysis]
+title: "beer_markets"
+author: "Julia Candee"
+date: "2023-12-08"
+categories: [beer_markets, code, analysis]
 image: "image.png"
 
 execute: 
@@ -11,6 +11,7 @@ execute:
   
 toc: true
 ---
+
 ```{r}
 #| include: false
 
@@ -33,66 +34,54 @@ theme_set(theme_ipsum()+
           )
 ```
 
-Let's analyze the `starwars` data:
+Let's analyze the `beer_markets` data:
 
 ```{r}
-starwars <- read_csv("https://bcdanl.github.io/data/starwars.csv")
+beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets.csv")
 ```
+
+## Q1a 
 
 
 ```{r}
 #| results: asis
-rmarkdown::paged_table(starwars) 
+rmarkdown::paged_table(beer_markets) 
 ```
 
 
 
-## Variable Description for `starwars` data.frame
+## Variable Description for `beer_markets` data.frame
 
-The following describes the variables in the `starwars` data.frame.
-
-
-- `films`
-List of films the character appeared in
-
-- `name`
-Name of the character
-
-- `species`
-Name of species
-
-- `height`
-Height (cm)
-
-- `mass`
-Weight (kg)
-
-- `hair_color`, `skin_color`, `eye_color`
-Hair, skin, and eye colors
-
-- `birth_year`
-Year born (BBY = Before Battle of Yavin)
-
-- `sex`
-The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).
-
-- `gender`
-The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).
-
-- `homeworld`
-Name of homeworld
+The following describes the variables in the `beer_markets` data.frame.
 
 
-## Human vs. Droid
+- `quanity`
+quanity of beer
 
-```{r}
-ggplot(data = 
-         starwars %>% 
-         filter(species %in% c("Human", "Droid"))) +
-  geom_boxplot(aes(x = species, y = mass, 
-                   fill = species),
-               show.legend = FALSE)
+- `brand`
+brand of beer
+- `dollar_spent`
+number of dollars spent
 
-```
+- `beer-floz`
+beer per fluid ounce
+
+- `price_per_floz`
+price per fluid ounce
+
+- `age`, `race`, `degree`, `employment`
+age, race, degree, and employment
+
+- `cow`
+cow
+
+- `microwave`
+Do they have a microwave in their home
+
+- `dishwasher`
+Do they have a dishwasher in their home
+
+- `npeople`
+number of people
 
 

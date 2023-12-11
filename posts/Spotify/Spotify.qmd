@@ -1,0 +1,90 @@
+---
+title: "Spotify"
+author: "Julia Candee"
+date: "2023-12-11"
+categories: [Spotify, code, analysis]
+image: "image.png"
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+
+```{r}
+#| include: false
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(10,0,0,0)),
+                axis.title.y  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(0,10,0,0))
+                )
+          )
+```
+
+Let's analyze the `Spotify` data:
+
+```{r}
+Spotify <- read_csv("https://bcdanl.github.io/data/spotify_all.csv")
+```
+
+
+```{r}
+#| results: asis
+rmarkdown::paged_table(Spotify) 
+```
+
+
+
+## Variable Description for `Spotify` data.frame
+
+The following describes the variables in the `Spotify` data.frame.
+
+
+- `playlist_name`
+Names of playlists
+
+- `pid`
+Pid number
+
+- `pos`
+Pos number
+
+- `artist_name`
+Name of artist
+
+- `track_name`
+Name of track
+
+- `duration_ms`
+Duration of the song
+
+- `album_name`
+Name of the album
+
+
+## track_name vs. pid
+
+```{r}
+ggplot(data = 
+         Spotify %>% 
+         filter(track_name %in% c("track_name", "pid"))) +
+  geom_boxplot(aes(x = track_name, y = pid, 
+                   fill = track_name),
+               show.legend = FALSE)
+
+```
+
+

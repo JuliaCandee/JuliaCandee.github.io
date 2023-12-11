@@ -1,0 +1,93 @@
+---
+title: "Restaurant_Inspection"
+author: "Julia Candee"
+date: "2023-12-11"
+categories: [Restaurant_Inspection, code, analysis]
+image: "image.png"
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+```{r}
+#| include: false
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(10,0,0,0)),
+                axis.title.y  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(0,10,0,0))
+                )
+          )
+```
+
+Let's analyze the `Restaurant_Inspection` data:
+
+```{r}
+Restaurant_Inspection <- read_csv("https://bcdanl.github.io/data/DOHMH_NYC_Restaurant_Inspection.csv")
+```
+
+
+```{r}
+#| results: asis
+rmarkdown::paged_table(Restaurant_Inspection) 
+```
+
+
+
+## Variable Description for `Restaurant_Inspection` data.frame
+
+The following describes the variables in the `Restaurant_Inspection` data.frame.
+
+
+- `DBA`
+Name of the restaurant
+
+- `BORO`
+What borough the restaurant is located in
+
+- `STREET`
+Name of the street the restaurant is located on
+
+- `CUISINE.DESCRIPTION`
+What type of cusine the restaurant serves
+
+- `INSPECTION.DATE`
+The date of the last inspection at the resurant
+
+- `ACTION`, `VIOLATION.CODE`, `VIOLATION.DESCRIPTION`
+action, violation.code, and violation.description
+
+- `SCORE`
+The score the restaurant got on the inspection
+
+- `GRADE`
+The grade the restaurant got on the inspection
+
+- `CRITICAL.FLAG`
+Whether or not the inspection is critical or not critical
+
+
+
+## Boro vs. Cuisine.description
+
+```{r}
+ggplot(data = Restaurant_Inspection %>% 
+         filter(BORO %in% c("BORO", "DBA"))) +
+  geom_boxplot(aes(x = BORO, y = SCORE, fill = DBA), show.legend = FALSE)
+
+```
+
+

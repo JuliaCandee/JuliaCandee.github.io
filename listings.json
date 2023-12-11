@@ -2,8 +2,11 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/welcome/index.html",
-      "/posts/beer-market/beer.html"
+      "/posts/welcome/danl200-hw5-Candee-Julia.html",
+      "/posts/Spotify/Spotify.html",
+      "/posts/Restaurant_Inspection/Restaurant_Inspection.html",
+      "/posts/beer-market/beer.html",
+      "/posts/index.html"
     ]
   }
 ]

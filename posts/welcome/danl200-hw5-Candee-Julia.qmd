@@ -1,0 +1,484 @@
+---
+title: "danl200-Candee-Julia.qmd"
+editor: visual
+---
+
+-   
+
+    ---
+    title: "beer_markets"
+    author: "Julia Candee"
+    date: "2023-12-08"
+    categories: [beer_markets, code, analysis]
+    image: "image.png"
+
+    execute: 
+      warning: false
+      message: false
+      
+    toc: true
+    ---
+
+    ```{r}
+    #| include: false
+
+    library(knitr)
+    library(rmarkdown)
+    library(tidyverse)
+    library(skimr)
+    library(ggthemes)
+    library(hrbrthemes)
+
+    theme_set(theme_ipsum()+
+              theme(strip.background =element_rect(fill="lightgray"),
+                    axis.title.x  = element_text(angle = 0,
+                                                size = rel(1.5),
+                                                margin = margin(10,0,0,0)),
+                    axis.title.y  = element_text(angle = 0,
+                                                size = rel(1.5),
+                                                margin = margin(0,10,0,0))
+                    )
+              )
+    ```
+
+    Let's analyze the `beer_markets` data:
+
+    ```{r}
+    beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets.csv")
+    ```
+
+    ## Q1a
+
+    ```{r}
+    #| results: asis
+    rmarkdown::paged_table(beer_markets) 
+    ```
+
+    ## Variable Description for `beer_markets` data.frame
+
+    The following describes the variables in the `beer_markets` data.frame.
+
+    -   `quanity` quanity of beer
+
+    -   `brand` brand of beer
+
+    -   `dollar_spent` number of dollars spent
+
+    -   `beer-floz` beer per fluid ounce
+
+    -   `price_per_floz` price per fluid ounce
+
+    -   `age`, `race`, `degree`, `employment` age, race, degree, and employment
+
+    -   `cow` cow
+
+    -   `microwave` Do they have a microwave in their home
+
+    -   `dishwasher` Do they have a dishwasher in their home
+
+    -   `npeople` number of people
+
+-   Add a blog post with your answers for Question 2 to your website (`https://JuliaCandee.github.io/`).
+
+    -   Make sure that your blog post for Question 2 includes all the questionnaires and your answers to them.
+
+    -   Make sure that your blog post for Question 2 has a section for each sub-question (e.g., Q2a, Q2b) in Question 2, so that the Table of Contents display the section for each questionnaire.
+
+-   The following is the data.frame for Question 2.
+
+    ```{r}
+    library(dplyr)
+    library(readr)
+    NFL2022_stuffs <- read_csv('https://bcdanl.github.io/data/NFL2022_stuffs.csv')
+
+    ```
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><p>play_id</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: left;"><p>game_id</p>
+<p>&lt;chr&gt;</p></th>
+<th style="text-align: right;"><p>drive</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: right;"><p>week</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: left;"><p>posteam</p>
+<p>&lt;chr&gt;</p></th>
+<th style="text-align: right;"><p>qtr</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: right;"><p>down</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: right;"><p>half_seconds_remaining</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: right;"><p>pass</p>
+<p>&lt;dbl&gt;</p></th>
+<th style="text-align: right;"><p>wp</p>
+<p>&lt;dbl&gt;</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>NA</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NA</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>NA</p></td>
+<td style="text-align: right;"><p>1800</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>5.462618e-01</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>43</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>NA</p></td>
+<td style="text-align: right;"><p>1800</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>5.462618e-01</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><p>68</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1796</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>5.469690e-01</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>89</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1769</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>5.725734e-01</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><p>115</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>2</p></td>
+<td style="text-align: right;"><p>1765</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>5.545366e-01</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>136</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>3</p></td>
+<td style="text-align: right;"><p>1741</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>5.401673e-01</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><p>172</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>NYJ</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>4</p></td>
+<td style="text-align: right;"><p>1733</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>4.880532e-01</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>202</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>2</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>BAL</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>1722</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>4.958201e-01</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><p>230</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>2</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>BAL</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>2</p></td>
+<td style="text-align: right;"><p>1701</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>4.965942e-01</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>254</p></td>
+<td style="text-align: left;"><p>2022_01_BAL_NYJ</p></td>
+<td style="text-align: right;"><p>2</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: left;"><p>BAL</p></td>
+<td style="text-align: right;"><p>1</p></td>
+<td style="text-align: right;"><p>3</p></td>
+<td style="text-align: right;"><p>1661</p></td>
+<td style="text-align: right;"><p>0</p></td>
+<td style="text-align: right;"><p>4.987317e-01</p></td>
+</tr>
+</tbody>
+</table>
+
+Next
+
+**1**23456
+
+\...
+
+1000
+
+Previous
+
+1-10 of 10,000 rows
+
+-   `NFL2022_stuffs` is the data.frame that contains information about NFL games in year 2022, in which the unit of observation is a single play for each drive in a NFL game.
+
+## Variable description
+
+-   `play_id`: Numeric play identifier that when used with `game_id` and `drive` provides the unique identifier for a single play
+
+-   `game_id`: Ten digit identifier for NFL game.
+
+-   `drive`: Numeric drive number in the game.
+
+-   `week`: Season week.
+
+-   `posteam`: String abbreviation for the team with possession.
+
+-   `qtr`: Quarter of the game (5 is overtime).
+
+-   `half_seconds_remaining`: Numeric seconds remaining in the half.
+
+-   `down`: The down for the given play.
+
+    -   Basically you get four attempts (aka downs) to move the ball 10 yards (by either running with it or passing it).
+
+    -   If you make 10 yards then you get another set of four downs.
+
+-   `pass`: Binary indicator if the play was a pass play.
+
+-   `wp`: Estimated winning probability for the `posteam` given the current situation at the start of the given play.
+
+## Q2a.
+
+In data.frame, NFL2022_stuffs, remove observations for which values of `posteam` is missing.
+
+**Answer**:
+
+```{r}
+summary_pass <- NFL2022_stuffs |> 
+  dplyr::filter(wp > 0.2 & wp < 0.75 & down <= 2 & half_seconds_remaining > 120) |> 
+  dplyr::group_by(posteam) |> 
+  dplyr::summarize(mean_pass = mean(pass, na.rm = TRUE))
+
+```
+
+## Q2b.
+
+-   Summarize the mean value of `pass` for each `posteam` when all the following conditions hold:
+
+    1.  `wp` is greater than 20% and less than 75%;
+
+    2.  `down` is less than or equal to 2; and
+
+    3.  `half_seconds_remaining` is greater than 120.
+
+**Answer**:
+
+```{r}
+summary_pass <- NFL2022_stuffs |> 
+  dplyr::filter(wp > 0.2 & wp < 0.75 & down <= 2 & half_seconds_remaining > 120) |> 
+  dplyr::group_by(posteam) |> 
+  dplyr::summarize(mean_pass = mean(pass, na.rm = TRUE))
+
+```
+
+## Q2c.
+
+-   Provide both (1) a ggplot code with `geom_point()` using the resulting data.frame in Q2b and (2) a simple comments to describe the mean value of `pass` for each `posteam`.
+
+    -   In the ggplot, reorder the `posteam` categories based on the mean value of `pass` in ascending or in descending order.
+
+**Answer**:
+
+```{r}
+# Assuming `summary_pass` is the result from Q2b
+summary_pass |> 
+  ggplot2::ggplot(ggplot2::aes(x = reorder(posteam, mean_pass), y = mean_pass)) +
+  ggplot2::geom_point() +
+  ggplot2::labs(title = "Mean Value of pass for each posteam",
+       x = "Posteam",
+       y = "Mean Pass Value") +
+  ggplot2::theme_minimal()
+
+```
+
+## Q2d.
+
+-   Consider the following data.frame, `NFL2022_epa`:
+
+```         
+NFL2022_epa <- read_csv('https://bcdanl.github.io/data/NFL2022_epa.csv')
+```
+
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| play_id | game_id         | drive   | posteam | receiver   | passer    | epa           |
+|         |                 |         |         |            |           |               |
+| \<dbl\> | \<chr\>         | \<dbl\> | \<chr\> | \<chr\>    | \<chr\>   | \<dbl\>       |
++========:+:================+========:+:========+:===========+:==========+==============:+
+| 43      | 2022_01_BAL_NYJ | 1       | NYJ     | NA         | NA        | -4.435212e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 68      | 2022_01_BAL_NYJ | 1       | NYJ     | NA         | NA        | 1.468819e+00  |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 89      | 2022_01_BAL_NYJ | 1       | NYJ     | Mi.Carter  | J.Flacco  | -4.921924e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 115     | 2022_01_BAL_NYJ | 1       | NYJ     | NA         | NA        | -3.259313e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 136     | 2022_01_BAL_NYJ | 1       | NYJ     | NA         | J.Flacco  | -2.402200e+00 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 172     | 2022_01_BAL_NYJ | 1       | NYJ     | NA         | NA        | -2.316321e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 202     | 2022_01_BAL_NYJ | 2       | BAL     | R.Bateman  | L.Jackson | 7.512748e-02  |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 230     | 2022_01_BAL_NYJ | 2       | BAL     | D.Duvernay | L.Jackson | -1.051203e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 254     | 2022_01_BAL_NYJ | 2       | BAL     | NA         | NA        | 8.950552e-01  |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+| 275     | 2022_01_BAL_NYJ | 2       | BAL     | NA         | NA        | -5.292742e-01 |
++---------+-----------------+---------+---------+------------+-----------+---------------+
+
+Next
+
+**1**23456
+
+\...
+
+1000
+
+Previous
+
+1-10 of 10,000 rows
+
+-   Variable description for `NFL2022_epa`
+
+    -   `play_id`: Numeric play identifier that when used with `game_id` and `drive` provides the unique identifier for a single play
+
+    -   `game_id`: Ten digit identifier for NFL game.
+
+    -   `drive`: Numeric drive number in the game.
+
+    -   `posteam`: String abbreviation for the team with possession.
+
+    -   `passer`: Name of the player who passed a ball to a receiver by initially taking a three-step drop and backpedaling into the pocket to make a pass. (Mostly, they are quarterbacks)
+
+    -   `receiver`: Name of the receiver.
+
+    -   `epa`: Expected points added (EPA) by the `posteam` for the given play.
+
+-   Create the data.frame, `NFL2022_stuffs_EPA`, that includes
+
+    1.  All the variables in the data.frame, `NFL2022_stuffs`;
+
+    2.  The variables, `passer`, `receiver`, and `epa`, from the data.frame, `NFL2022_epa`. by joining the two data.frames.
+
+-   In the resulting data.frame, `NFL2022_stuffs_EPA`, remove observations with `NA` in `passer`.
+
+**Answer**:
+
+```{r}
+NFL2022_epa <- readr::read_csv('https://bcdanl.github.io/data/NFL2022_epa.csv')
+
+NFL2022_stuffs_EPA <- NFL2022_stuffs |> 
+  dplyr::left_join(NFL2022_epa |> dplyr::select(play_id, passer, receiver, epa), by = "play_id") |> 
+  dplyr::filter(!is.na(passer))
+
+```
+
+## Q2e.
+
+-   Provide both (1) a single ggplot and (2) a simple comment to describe the NFL weekly trend of `week`ly mean value of `epa` for each of the following two passers,
+
+    1.  `"J.Allen"`
+
+    2.  `"P.Mahomes"`
+
+**Answer**:
+
+```{r}
+library(ggplot2)
+
+ggplot(NFL2022_stuffs_EPA, aes(x = week, y = epa, group = passer, color = passer)) +
+  geom_point(size = 3) +
+  geom_line(size = 1, alpha = 0.5) +
+  labs(title = "NFL Weekly Trend of Weekly Mean EPA for Passers",
+       x = "Week",
+       y = "Mean EPA") +
+  theme_minimal()
+
+
+
+```
+
+## Q2f.
+
+Calculate the difference between the mean value of `epa` for `"J.Allen"` the mean value of `epa` for `"P.Mahomes"` for each value of `week`.
+
+**Answer**:
+
+```{r}
+epa_diff <- NFL2022_stuffs_EPA |> 
+  dplyr::filter(passer %in% c("J.Allen", "P.Mahomes")) |> 
+  dplyr::group_by(week, passer) |> 
+  dplyr::summarize(mean_epa_diff = mean(epa, na.rm = TRUE))
+
+```
+
+## Q2g.
+
+-   Summarize the resulting data.frame in `Q2d`, with the following four variables:
+
+    -   `posteam`: String abbreviation for the team with possession.
+
+    -   `passer`: Name of the player who passed a ball to a receiver by initially taking a three-step drop, and backpedaling into the pocket to make a pass. (Mostly, they are quarterbacks.)
+
+    -   `mean_epa`: Mean value of `epa` in 2022 for each `passer`
+
+    -   `n_pass`: Number of observations for each `passer`
+
+-   Then find the top 10 NFL `passer`s in 2022 in terms of the mean value of `epa`, conditioning that `n_pass` must be greater than or equal to the third quantile level of `n_pass`.
+
+**Answer**:
+
+```{r}
+passer_summary <- NFL2022_stuffs_EPA |> 
+  dplyr::group_by(posteam, passer) |> 
+  dplyr::summarize(mean_epa = mean(epa, na.rm = TRUE),
+            n_pass = n()) |> 
+  dplyr::filter(n_pass >= quantile(n_pass, 0.75)) |> 
+  dplyr::arrange(desc(mean_epa)) |> 
+  dplyr::top_n(10, wt = mean_epa)
+
+```
