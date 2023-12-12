@@ -4,12 +4,14 @@ author: "Julia Candee"
 date: "2023-12-08"
 categories: [beer_markets, code, analysis]
 image: beer_market.jpg
-
 execute: 
+  
   warning: false
   message: false
-  
 toc: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r}
@@ -40,48 +42,64 @@ Let's analyze the `beer_markets` data:
 beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets.csv")
 ```
 
-## Q1a 
-
+## Q1a
 
 ```{r}
 #| results: asis
 rmarkdown::paged_table(beer_markets) 
 ```
 
-
-
 ## Variable Description for `beer_markets` data.frame
 
 The following describes the variables in the `beer_markets` data.frame.
 
+-   `quanity` quanity of beer
 
-- `quanity`
-quanity of beer
+-   `brand` brand of beer
 
-- `brand`
-brand of beer
-- `dollar_spent`
-number of dollars spent
+-   `dollar_spent` number of dollars spent
 
-- `beer-floz`
-beer per fluid ounce
+-   `beer-floz` beer per fluid ounce
 
-- `price_per_floz`
-price per fluid ounce
+-   `price_per_floz` price per fluid ounce
 
-- `age`, `race`, `degree`, `employment`
-age, race, degree, and employment
+-   `age`, `race`, `degree`, `employment` age, race, degree, and
+    employment
 
-- `cow`
-cow
+-   `cow` cow
 
-- `microwave`
-Do they have a microwave in their home
+-   `microwave` Do they have a microwave in their home
 
-- `dishwasher`
-Do they have a dishwasher in their home
+-   `dishwasher` Do they have a dishwasher in their home
 
-- `npeople`
-number of people
+-   `npeople` number of people
+
+## Graph 1: Bar plot
+```{r}
+library(ggplot2)
+ggplot(beer_markets, aes(x = brand, y = price_per_floz)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(title = "Price Per Fluid Ounce Based Upon Beer Brands",
+       x = "Beer Brand",
+       y = "Price PEr Fluid Ounce")
+```
+
+## Graph 2: Scatterplot
+```{r}
+ggplot(beer_markets, aes(x = race, y = dollar_spent)) +
+  geom_point(color = "darkgreen") +
+  labs(title = "Scatter Plot of race vs. dollar_spent",
+       x = "race",
+       y = "dollar_spent")
+```
+
+## Graph 3:
+```{r}
+ggplot(beer_markets, aes(x = degree, y = dollar_spent)) +
+  geom_line(color = "orange") +
+  labs(title = "What Degree level had spent the Most Money on Beer",
+       x = "degree",
+       y = "dollar_spent")
+```
 
 

@@ -2,12 +2,12 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/danl200-hw5-Candee-Julia.html",
-      "/posts/welcome/danl200-hw5-Candee-Julia.html",
+      "/posts/welcome/danl200-hw5-Candee-Julia_files/danl200-hw5-Candee-Julia.html",
       "/posts/Spotify/Spotify.html",
       "/posts/Restaurant_Inspection/Restaurant_Inspection.html",
       "/posts/beer-market/beer.html",
-      "/posts/index.html"
+      "/posts/index.html",
+      "/posts/welcome/index.html"
     ]
   }
 ]

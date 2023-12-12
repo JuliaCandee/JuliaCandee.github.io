@@ -181,6 +181,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#q1a" id="toc-q1a" class="nav-link active" data-scroll-target="#q1a">Q1a</a></li>
   <li><a href="#variable-description-for-beer_markets-data.frame" id="toc-variable-description-for-beer_markets-data.frame" class="nav-link" data-scroll-target="#variable-description-for-beer_markets-data.frame">Variable Description for <code>beer_markets</code> data.frame</a></li>
+  <li><a href="#graph-1-bar-plot" id="toc-graph-1-bar-plot" class="nav-link" data-scroll-target="#graph-1-bar-plot">Graph 1: Bar plot</a></li>
+  <li><a href="#graph-2-scatterplot" id="toc-graph-2-scatterplot" class="nav-link" data-scroll-target="#graph-2-scatterplot">Graph 2: Scatterplot</a></li>
+  <li><a href="#graph-3" id="toc-graph-3" class="nav-link" data-scroll-target="#graph-3">Graph 3:</a></li>
   </ul>
 </nav>
     </div>
@@ -221,6 +224,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>dishwasher</code> Do they have a dishwasher in their home</p></li>
 <li><p><code>npeople</code> number of people</p></li>
 </ul>
+</section>
+<section id="graph-1-bar-plot" class="level2">
+<h2 class="anchored" data-anchor-id="graph-1-bar-plot">Graph 1: Bar plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_markets, <span class="fu">aes</span>(<span class="at">x =</span> brand, <span class="at">y =</span> price_per_floz)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price Per Fluid Ounce Based Upon Beer Brands"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Beer Brand"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Price PEr Fluid Ounce"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="beer_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="graph-2-scatterplot" class="level2">
+<h2 class="anchored" data-anchor-id="graph-2-scatterplot">Graph 2: Scatterplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_markets, <span class="fu">aes</span>(<span class="at">x =</span> race, <span class="at">y =</span> dollar_spent)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatter Plot of race vs. dollar_spent"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"race"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"dollar_spent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="beer_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="graph-3" class="level2">
+<h2 class="anchored" data-anchor-id="graph-3">Graph 3:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_markets, <span class="fu">aes</span>(<span class="at">x =</span> degree, <span class="at">y =</span> dollar_spent)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"What Degree level had spent the Most Money on Beer"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"degree"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"dollar_spent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="beer_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>

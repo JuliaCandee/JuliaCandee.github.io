@@ -87,4 +87,34 @@ ggplot(data =
 
 ```
 
+## Histogram
+```{r}
+ggplot(data = Spotify, aes(x = duration_ms)) +
+  geom_histogram(binwidth = 5000, fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Song Duration",
+       x = "Duration (ms)",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+## Scatterplot
+```{r}
+ggplot(data = Spotify, aes(x = pos, y = duration_ms)) +
+  geom_point(color = "darkorange") +
+  labs(title = "Scatter Plot of Pos vs. Duration",
+       x = "Pos",
+       y = "Duration (ms)") +
+  theme_minimal()
+```
+
+## Bar Chart
+```{r}
+library(ggplot2)
+ggplot(Spotify, aes(x = pos, y = pid, group = 1)) +
+  geom_line() +
+  labs(title = "Line Plot of PID by Position",
+       x = "pos",
+       y = "pid") +
+  theme_minimal()
+```
 
