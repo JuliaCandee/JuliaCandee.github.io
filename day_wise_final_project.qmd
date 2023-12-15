@@ -1,0 +1,174 @@
+---
+title: "DANL 200: Introduction to Data Analytics<br>Project"
+subtitle: "Quarto Template<br><br>" 
+author: 
+  - name: Julia Candee 1
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Jordan Caprice 2
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Jocelyn Matusiak 3
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Sophia Frisrias 4
+    affiliations:
+      - name: SUNY Geneseo
+  - <br>
+date: "`r Sys.Date()`"
+
+format: 
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false       # https://quarto.org/docs/output-formats/html-code.html
+    code-summary: "Show the code"
+    code-tools: true
+    highlight-style: espresso # atom-one tango espresso
+
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  message: false
+  fig-width: 9
+  
+---
+
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+
+```
+
+
+```{r}
+day_wise <- read_csv('https://jem10126.github.io/day_wise.csv')
+nvars <- format(round(ncol(day_wise), 0), 
+                nsmall=0, 
+                big.mark=",") 
+nobs <- format(round(nrow(day_wise), 0), 
+                nsmall=0, 
+                big.mark=",")
+```
+
+- Here is the paged table using `rmarkdown::paged_table()` with the `results = 'asis'` chunk option.
+
+```{r}
+#| results: asis
+#| echo: false
+rmarkdown::paged_table(day_wise) 
+```
+
+<br>
+
+The number of variables is `r nvars`; the number of observations is `r nobs`.
+
+<br>
+
+**Roses** are <span style="color: red;">red</span>
+
+*violets* are <span style="color: blue;">blue</span>.
+
+
+
+# Introduction
+
+- Why does your project matter?
+
+- Motivate your project.
+
+- Summarize the project in the last paragraph.
+
+
+# Data
+
+## Data Summary
+
+- Summary statistics (Use `skimr::skim()`)
+
+
+## Data Visualization
+
+```{r}
+day_wise %>% 
+  ggplot(aes(x = log(Deaths), 
+             y = log(Recovered))) +
+  geom_point(alpha = .1, color = 'purple') +
+  geom_smooth(method = lm, se = F) +
+  theme_bw() +
+  theme(legend.position = 'top')
+```
+
+
+
+## Data Transformation
+
+```{r}
+ob_sum1 <- day_wise %>% 
+  group_by(Deaths) %>% 
+  summarise(Deaths_tot = sum(Deaths, na.rm = TRUE),
+            recovered_mean = round(mean(Recovered, na.rm = TRUE), 2),
+            .groups = "drop")
+
+```
+
+
+```{r}
+#| results: asis
+#| echo: false
+rmarkdown::paged_table(ob_sum1) 
+```
+
+# Example Title {.unnumbered}
+- This is an unnumbered section.
+
+
+
+
+## Analysis
+
+
+## Quotes
+- Quote with `>`
+
+> "The truth is rarely pure and never simple."
+>
+> --- Oscar Wilde
+
+
+
+## Inserting Figures
+For a demonstration of a DANL tiger, see @fig-tiger.
+
+```{r}
+#| echo: false
+#| label: fig-tiger
+#| fig-cap: "DANL Tiger"
+#| fig-width: 1
+
+knitr::include_graphics("https://juliacandee.github.io/img/danl-tiger.gif")
+```
+
+
+
+## Inserting a HTML page
+````{=html}
+<style>iframe{height: 800px; width: 700px}</style>
+<iframe height="100%" width="100%" frameborder="no"
+src="https://bcdanl.shinyapps.io/01_old_faithful/">
+</iframe>
+```` 
+
+
+<br><br><br><br>
+
+# References
+
+- [https://quarto.org/docs/output-formats/html-basics.html](https://quarto.org/docs/output-formats/html-basics.html)
+
+- [https://quarto.org/docs/websites/](https://quarto.org/docs/websites/)
+
+- [R for Data Science](http://r4ds.hadley.nz) by [Hadley Wickham](https://hadley.nz)
