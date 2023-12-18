@@ -53,13 +53,15 @@ nobs <- format(round(nrow(day_wise), 0),
                 nsmall=0, 
                 big.mark=",")
 ```
- - Here is the paged table using `rmarkdown::paged_table()` with the `results = 'asis'` chunk option.
+
+- Here is the paged table using `rmarkdown::paged_table()` with the `results = 'asis'` chunk option.
 
 ```{r}
 #| results: asis
 #| echo: false
 rmarkdown::paged_table(day_wise) 
 ```
+
 <br>
 
 The number of variables is `r nvars`; the number of observations is `r nobs`.
@@ -76,16 +78,25 @@ The number of variables is `r nvars`; the number of observations is `r nobs`.
 
 - Why does your project matter?
 
+The project is crucial for understanding COVID-19 data, offering valuable insights to public health officials, policymakers, and the public. It aids in decision-making by identifying concerns, assessing interventions, and guiding resource allocation. Additionally, the analysis informs strategies for managing the pandemic, identifies factors related to recovery rates, and contributes to community awareness, empowering informed decision-making and preventive measures.
+
 - Motivate your project.
+
+The project is motivated by scientific inquiry, problem-solving, education, and social responsibility. Through the analysis of COVID-19 data, it explores the pandemic's complexities using data analytics, addresses real-world challenges, and provides an educational context for enhancing data analytics skills. The motivation is underscored by a commitment to social responsibility, contributing to the understanding of a global health crisis and leveraging data for societal betterment. In essence, the project's significance lies in its potential impact on public health and decision-making, aligning with broader goals of scientific exploration, problem-solving, education, and societal well-being.
 
 - Summarize the project in the last paragraph.
 
+In conclusion, our DANL 200 project focuses on delving into the dynamics of COVID-19 data. By utilizing data analytics techniques, we aim to uncover patterns, relationships, and trends within the dataset. This analysis holds significance in contributing valuable insights for public health decision-making, understanding the progression of the pandemic, and potentially aiding in the development of strategies to mitigate its impact."
 
 # Data
 
 ## Data Summary
 
 - Summary statistics (Use `skimr::skim()`)
+```{r}
+summary_stats <- skimr::skim(day_wise)
+summary_stats
+```
 
 
 ## Data Visualization
@@ -99,6 +110,9 @@ day_wise %>%
   theme_bw() +
   theme(legend.position = 'top')
 ```
+
+
+
 ## Data Transformation
 
 ```{r}
@@ -116,14 +130,35 @@ ob_sum1 <- day_wise %>%
 #| echo: false
 rmarkdown::paged_table(ob_sum1) 
 ```
+
 # Example Title {.unnumbered}
 - This is an unnumbered section.
-
+Unveiling Insights: A Comprehensive Analysis of COVID-19 Dynamics Using Data Analytics
 
 
 
 ## Analysis
+Data Reading and Exploration:
+The project begins by loading necessary libraries and reading COVID-19 data from 'day_wise.csv'.
 
+Summary statistics, generated using skimr::skim(), provide an initial overview of the dataset.
+
+Data Visualization:
+A scatter plot is created using ggplot2 to visualize the relationship between the logarithm of deaths and the logarithm of recoveries.
+The plot includes a linear regression line and is themed for clarity.
+
+Data Transformation:
+Summary statistics are computed for specific groupings using dplyr functions.
+A paged table is generated to display the summarized information.
+
+Additional Content:
+The document includes non-analysis components like an unnumbered section, quotes, and the inclusion of a figure depicting a DANL tiger.
+
+Motivation and Significance:
+The project's motivation and significance are outlined, emphasizing its potential impact on public health, decision-making, scientific inquiry, problem-solving, education, and social responsibility.
+
+Conclusion:
+The document concludes with an unnumbered section, but a direct summary of specific findings or insights from the analysis is not explicitly provided.
 
 ## Quotes
 - Quote with `>`
@@ -145,3 +180,18 @@ For a demonstration of a DANL tiger, see @fig-tiger.
 
 knitr::include_graphics("https://juliacandee.github.io/img/danl-tiger.gif")
 ```
+
+````{=html}
+
+```` 
+
+
+<br><br><br><br>
+
+# References
+
+- [https://quarto.org/docs/output-formats/html-basics.html](https://quarto.org/docs/output-formats/html-basics.html)
+
+- [https://quarto.org/docs/websites/](https://quarto.org/docs/websites/)
+
+- [R for Data Science](http://r4ds.hadley.nz) by [Hadley Wickham](https://hadley.nz)
