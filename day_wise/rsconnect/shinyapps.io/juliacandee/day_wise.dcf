@@ -1,0 +1,12 @@
+name: day_wise
+title: day_wise
+username: juliacandee
+account: juliacandee
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10815911
+bundleId: 8059148
+url: https://juliacandee.shinyapps.io/day_wise/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
