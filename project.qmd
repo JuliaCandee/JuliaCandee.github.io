@@ -1,92 +1,197 @@
 ---
-title: DANL Project
-subtitle: "Data-Driven Mastery: Unlocking Business Potential"
+title: "DANL 200: Introduction to Data Analytics<br>Project"
+subtitle: "Quarto Template<br><br>" 
 author: 
-  - Name 1
-  - Name 2
-  - Name 3
-  - Name 4
-  - Name 5
+  - name: Julia Candee 1
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Jordan Caprice 2
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Jocelyn Matusiak 3
+    affiliations:
+      - name: SUNY Geneseo
+  - name: Sophia Frisrias 4
+    affiliations:
+      - name: SUNY Geneseo
+  - <br>
+date: "`r Sys.Date()`"
 
-toc: true
-toc-title: "Table of Contents"
-toc-depth: 2
-number-sections: true
+format: 
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false       # https://quarto.org/docs/output-formats/html-code.html
+    code-summary: "Show the code"
+    code-tools: true
+    highlight-style: espresso # atom-one tango espresso
 
-fig-width: 9
-
-execute:
-  code-tools: true
-  message: false
+execute: 
+  echo: true
+  eval: true
   warning: false
-
-from: markdown+emoji
+  message: false
+  fig-width: 9
+  
 ---
-```{r setup}
-#| include: false
-library(tidyverse)
-library(skimr)
-library(ggthemes)
-library(hrbrthemes)
 
-theme_set(theme_ipsum()+
-          theme(strip.background =element_rect(fill="lightgray"),
-                axis.title.x = 
-                  element_text(angle = 0,
-                               size = rel(1.33),
-                               margin = margin(10,0,0,0)),
-                axis.title.y = 
-                  element_text(angle = 0,
-                               size = rel(1.33),
-                               margin = margin(0,10,0,0))
-                )
-          )
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+
 ```
+
+
+```{r}
+day_wise <- read_csv('https://jem10126.github.io/day_wise.csv')
+nvars <- format(round(ncol(day_wise), 0), 
+                nsmall=0, 
+                big.mark=",") 
+nobs <- format(round(nrow(day_wise), 0), 
+                nsmall=0, 
+                big.mark=",")
+```
+
+- Here is the paged table using `rmarkdown::paged_table()` with the `results = 'asis'` chunk option.
+
+```{r}
+#| results: asis
+#| echo: false
+rmarkdown::paged_table(day_wise) 
+```
+
+<br>
+
+The number of variables is `r nvars`; the number of observations is `r nobs`.
+
+<br>
+
+**Roses** are <span style="color: red;">red</span>
+
+*violets* are <span style="color: blue;">blue</span>.
 
 
 
 # Introduction
 
-About this project :clap:
+- Why does your project matter?
 
-```{r}
-1 + 1
-```
+The project is crucial for understanding COVID-19 data, offering valuable insights to public health officials, policymakers, and the public. It aids in decision-making by identifying concerns, assessing interventions, and guiding resource allocation. Additionally, the analysis informs strategies for managing the pandemic, identifies factors related to recovery rates, and contributes to community awareness, empowering informed decision-making and preventive measures.
 
+- Motivate your project.
+
+The project is motivated by scientific inquiry, problem-solving, education, and social responsibility. Through the analysis of COVID-19 data, it explores the pandemic's complexities using data analytics, addresses real-world challenges, and provides an educational context for enhancing data analytics skills. The motivation is underscored by a commitment to social responsibility, contributing to the understanding of a global health crisis and leveraging data for societal betterment. In essence, the project's significance lies in its potential impact on public health and decision-making, aligning with broader goals of scientific exploration, problem-solving, education, and societal well-being.
+
+- Summarize the project in the last paragraph.
+
+In conclusion, our DANL 200 project focuses on delving into the dynamics of COVID-19 data. By utilizing data analytics techniques, we aim to uncover patterns, relationships, and trends within the dataset. This analysis holds significance in contributing valuable insights for public health decision-making, understanding the progression of the pandemic, and potentially aiding in the development of strategies to mitigate its impact."
 
 # Data
 
-The data.frame `mpg` contains a subset of the fuel economy data that the EPA makes available on [https://fueleconomy.gov/](https://fueleconomy.gov/). It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car. :oncoming_automobile:
+## Data Summary
+
+- Summary statistics (Use `skimr::skim()`)
+```{r}
+summary_stats <- skimr::skim(day_wise)
+summary_stats
+```
 
 
-## Summary Statistics
+## Data Visualization
 
 ```{r}
-mpg <- ggplot2::mpg
+day_wise %>% 
+  ggplot(aes(x = log(Deaths), 
+             y = log(Recovered))) +
+  geom_point(alpha = .1, color = 'purple') +
+  geom_smooth(method = lm, se = F) +
+  theme_bw() +
+  theme(legend.position = 'top')
 ```
+
+
+
+## Data Transformation
+
+```{r}
+ob_sum1 <- day_wise %>% 
+  group_by(Deaths) %>% 
+  summarise(Deaths_tot = sum(Deaths, na.rm = TRUE),
+            recovered_mean = round(mean(Recovered, na.rm = TRUE), 2),
+            .groups = "drop")
+
+```
+
 
 ```{r}
 #| results: asis
 #| echo: false
-rmarkdown::paged_table(mpg) 
+rmarkdown::paged_table(ob_sum1) 
 ```
 
+# Example Title {.unnumbered}
+- This is an unnumbered section.
+Unveiling Insights: A Comprehensive Analysis of COVID-19 Dynamics Using Data Analytics
+
+
+
+## Analysis
+Data Reading and Exploration:
+The project begins by loading necessary libraries and reading COVID-19 data from 'day_wise.csv'.
+
+Summary statistics, generated using skimr::skim(), provide an initial overview of the dataset.
+
+Data Visualization:
+A scatter plot is created using ggplot2 to visualize the relationship between the logarithm of deaths and the logarithm of recoveries.
+The plot includes a linear regression line and is themed for clarity.
+
+Data Transformation:
+Summary statistics are computed for specific groupings using dplyr functions.
+A paged table is generated to display the summarized information.
+
+Additional Content:
+The document includes non-analysis components like an unnumbered section, quotes, and the inclusion of a figure depicting a DANL tiger.
+
+Motivation and Significance:
+The project's motivation and significance are outlined, emphasizing its potential impact on public health, decision-making, scientific inquiry, problem-solving, education, and social responsibility.
+
+Conclusion:
+The document concludes with an unnumbered section, but a direct summary of specific findings or insights from the analysis is not explicitly provided.
+
+## Quotes
+- Quote with `>`
+
+> "The truth is rarely pure and never simple."
+>
+> --- Oscar Wilde
+
+
+
+## Inserting Figures
+For a demonstration of a DANL tiger, see @fig-tiger.
 
 ```{r}
-skim(mpg) %>% 
-  select(-n_missing)
+#| echo: false
+#| label: fig-tiger
+#| fig-cap: "DANL Tiger"
+#| fig-width: 1
+
+knitr::include_graphics("https://juliacandee.github.io/img/danl-tiger.gif")
 ```
 
+````{=html}
 
-## MPG and a Type of Cars
-The following boxplot shows how the distribution of highway MPG (`hwy`) varies by a type of cars (`class`) :blue_car: :truck: :minibus:.
-
-
-```{r}
-ggplot(data = mpg) +
-  geom_boxplot(aes(x = class, y = hwy, fill = class),
-               show.legend = F) +
-  labs(x = "Class", y = "Highway\nMPG") 
-```
+```` 
 
 
+<br><br><br><br>
+
+# References
+
+- [https://quarto.org/docs/output-formats/html-basics.html](https://quarto.org/docs/output-formats/html-basics.html)
+
+- [https://quarto.org/docs/websites/](https://quarto.org/docs/websites/)
+
+- [R for Data Science](http://r4ds.hadley.nz) by [Hadley Wickham](https://hadley.nz)
