@@ -102,7 +102,7 @@
     "href": "blog-listing.html",
     "title": "Julia’s Insightful Analysis",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\ndanl200-Candee-Julia.qmd\n\n\n\n\n\n\n\n\n\n13 min\n\n\n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nDec 11, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nRestaurant_Inspection\n\n\n\n\n\n\n\n\n\nDec 11, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nbeer_markets\n\n\n\n\n\n\n\n\n\nDec 8, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nJulia Candee\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nJulia Candee\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\ndanl200-Candee-Julia.qmd\n\n\n\n\n\n\n\n\n\n13 min\n\n\n\n\n\n\n  \n\n\n\n\ndanl200-Candee-Julia.qmd\n\n\n\n\n\n\n\n\n\n13 min\n\n\n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nDec 11, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nRestaurant_Inspection\n\n\n\n\n\n\n\n\n\nDec 11, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nbeer_markets\n\n\n\n\n\n\n\n\n\nDec 8, 2023\n\n\nJulia Candee\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nJulia Candee\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nJulia Candee\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "project.html",
@@ -460,5 +460,61 @@
     "title": "NFL2022",
     "section": "Q2g.",
     "text": "Q2g.\n\nSummarize the resulting data.frame in Q2d, with the following four variables:\n\nposteam: String abbreviation for the team with possession.\npasser: Name of the player who passed a ball to a receiver by initially taking a three-step drop, and backpedaling into the pocket to make a pass. (Mostly, they are quarterbacks.)\nmean_epa: Mean value of epa in 2022 for each passer\nn_pass: Number of observations for each passer\n\nThen find the top 10 NFL passers in 2022 in terms of the mean value of epa, conditioning that n_pass must be greater than or equal to the third quantile level of n_pass.\n\nAnswer:\n\npasser_summary &lt;- NFL2022_stuffs_EPA |&gt; \n  dplyr::group_by(posteam, passer) |&gt; \n  dplyr::summarize(mean_epa = mean(epa, na.rm = TRUE),\n            n_pass = n()) |&gt; \n  dplyr::filter(n_pass &gt;= quantile(n_pass, 0.75)) |&gt; \n  dplyr::arrange(desc(mean_epa)) |&gt; \n  dplyr::top_n(10, wt = mean_epa)\n\n`summarise()` has grouped output by 'posteam'. You can override using the\n`.groups` argument."
+  },
+  {
+    "objectID": "day_wise_final_project.html",
+    "href": "day_wise_final_project.html",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "",
+    "text": "day_wise &lt;- read_csv('https://jem10126.github.io/day_wise.csv')\nnvars &lt;- format(round(ncol(day_wise), 0), \n                nsmall=0, \n                big.mark=\",\") \nnobs &lt;- format(round(nrow(day_wise), 0), \n                nsmall=0, \n                big.mark=\",\")\nThe number of variables is 12; the number of observations is 188.\nRoses are red\nviolets are blue."
+  },
+  {
+    "objectID": "day_wise_final_project.html#data-summary",
+    "href": "day_wise_final_project.html#data-summary",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.1 Data Summary",
+    "text": "2.1 Data Summary\n\nSummary statistics (Use skimr::skim())"
+  },
+  {
+    "objectID": "day_wise_final_project.html#data-visualization",
+    "href": "day_wise_final_project.html#data-visualization",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.2 Data Visualization",
+    "text": "2.2 Data Visualization\n\nday_wise %&gt;% \n  ggplot(aes(x = log(Deaths), \n             y = log(Recovered))) +\n  geom_point(alpha = .1, color = 'purple') +\n  geom_smooth(method = lm, se = F) +\n  theme_bw() +\n  theme(legend.position = 'top')"
+  },
+  {
+    "objectID": "day_wise_final_project.html#data-transformation",
+    "href": "day_wise_final_project.html#data-transformation",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.3 Data Transformation",
+    "text": "2.3 Data Transformation\n\nob_sum1 &lt;- day_wise %&gt;% \n  group_by(Deaths) %&gt;% \n  summarise(Deaths_tot = sum(Deaths, na.rm = TRUE),\n            recovered_mean = round(mean(Recovered, na.rm = TRUE), 2),\n            .groups = \"drop\")"
+  },
+  {
+    "objectID": "day_wise_final_project.html#analysis",
+    "href": "day_wise_final_project.html#analysis",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.4 Analysis",
+    "text": "2.4 Analysis"
+  },
+  {
+    "objectID": "day_wise_final_project.html#quotes",
+    "href": "day_wise_final_project.html#quotes",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.5 Quotes",
+    "text": "2.5 Quotes\n\nQuote with &gt;\n\n\n“The truth is rarely pure and never simple.”\n— Oscar Wilde"
+  },
+  {
+    "objectID": "day_wise_final_project.html#inserting-figures",
+    "href": "day_wise_final_project.html#inserting-figures",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.6 Inserting Figures",
+    "text": "2.6 Inserting Figures\nFor a demonstration of a DANL tiger, see Figure 1.\n\n\n\n\n\nFigure 1: DANL Tiger"
+  },
+  {
+    "objectID": "day_wise_final_project.html#inserting-a-html-page",
+    "href": "day_wise_final_project.html#inserting-a-html-page",
+    "title": "DANL 200: Introduction to Data AnalyticsProject",
+    "section": "2.7 Inserting a HTML page",
+    "text": "2.7 Inserting a HTML page"
   }
 ]
